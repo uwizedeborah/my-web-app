@@ -1,33 +1,22 @@
 pipeline {
-    agent any
-
+    agent any // Runs on any available agent
     stages {
-        stage('Checkout') {
-            steps {
-                checkout scm
-            }
-        }
-
         stage('Build') {
             steps {
-                bat 'echo Building the project...'
-                // Run your actual build command here, e.g., npm install
-                bat 'npm install'
+                echo "Building the project..."
+                bat 'dir' // Windows command to list files
             }
         }
-
         stage('Test') {
             steps {
-                bat 'echo Running tests...'
-                // Run your actual test command
-                bat 'npm test'
+                echo "Running tests..."
+                // Add your Windows test commands here
             }
         }
-
         stage('Deploy') {
             steps {
-                bat 'echo Deploying project...'
-                // Run your actual deploy command
+                echo "Deploying..."
+                // Add your Windows deploy commands here
             }
         }
     }
