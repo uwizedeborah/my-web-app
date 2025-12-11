@@ -1,19 +1,18 @@
-const http = require('http');
-const auth = require('./auth');
+// Import Express
+const express = require('express');
 
-const server = http.createServer((req, res) => {
-  if (req.url === '/about') {
-    res.writeHead(200, {'Content-Type': 'text/plain'});
-    res.end('About Page\n');
-  } else if (req.url === '/auth') {
-    res.writeHead(200, {'Content-Type': 'text/plain'});
-    res.end(auth.getWelcomeMessage());
-  } else {
-    res.writeHead(200, {'Content-Type': 'text/plain'});
-    res.end('Hello, this is a basic web app!');
-  }
+// Create an Express app
+const app = express();
+
+// Define a port
+const PORT = 3000;
+
+// Define a simple route
+app.get('/', (req, res) => {
+    res.send('Hello World! This is a simple Express server.');
 });
 
-server.listen(3000, () => {
-  console.log('Server running at http://localhost:3000');
+// Start the server
+app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
 });
